@@ -1,0 +1,20 @@
+.navbar {
+    ul {
+        display: flex;
+        gap: 1rem; // Reduces space between links to 1rem
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        
+        li {
+            a {
+                text-decoration: none;
+                padding: 0.5rem;
+                
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
