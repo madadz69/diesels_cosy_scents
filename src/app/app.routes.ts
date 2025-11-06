@@ -6,6 +6,7 @@ import { WhoIsDieselComponent } from './who-is-diesel/who-is-diesel.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 
 export const routes: Routes = [
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'products', component: ProductsComponent },
     { path: 'about', component: AboutUsComponent },
