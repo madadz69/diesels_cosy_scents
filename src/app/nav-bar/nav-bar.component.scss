@@ -1,20 +1,22 @@
 .navbar {
-    ul {
-        display: flex;
-        gap: 1rem; // Reduces space between links to 1rem
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        
-        li {
-            a {
-                text-decoration: none;
-                padding: 0.5rem;
-                
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-        }
+    background-color: #c49bf9;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #333;
+
+    &:hover {
+        text-decoration: underline; // light blue highlight
+        color: #002b45;
+    }
+
+    &.active {
+        font-weight: bold;
+        color: #f6f6f6;
     }
 }
