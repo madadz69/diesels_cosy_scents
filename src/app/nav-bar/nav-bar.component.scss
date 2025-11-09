@@ -5,6 +5,12 @@
     align-items: center;
 }
 
+.navbar-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
 .nav-link {
     margin: 0 6px;
     display: inline-block;
