@@ -1,1 +1,43 @@
-<p>products works!</p>
+<div class="jumbotron jumbotron-fluid products-hero position-relative overflow-hidden">
+  <div class="products-hero__overlay position-absolute top-0 start-0 w-100 h-100"></div>
+  <div class="container position-absolute top-50 start-50 translate-middle text-center text-white px-3">
+    <p class="eyebrow">Hand-poured melts</p>
+    <h1 class="display-5">Choose your next cosy scent</h1>
+    <p class="lead mb-4">
+      Discover Diesel's favourite blends, add them to your basket, and finish your purchase when
+      you're ready.
+    </p>
+    <a routerLink="/cart" class="btn btn-light btn-lg">View basket</a>
+  </div>
+</div>
+
+<div class="container products-section py-5">
+  <div class="row g-4">
+    <div
+      class="col-sm-6 col-lg-4"
+      *ngFor="let product of products; trackBy: trackByProductId"
+    >
+      <article class="product-card h-100">
+        <img
+          *ngIf="product.imageUrl"
+          [src]="product.imageUrl"
+          [alt]="product.name"
+          loading="lazy"
+        />
+        <div class="product-card__body">
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.description }}</p>
+          <div class="product-card__footer">
+            <span class="product-card__price">{{ product.price | currency: 'GBP' }}</span>
+            <button type="button" (click)="add(product)">Add to basket</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="products-section__cta text-center mt-5">
+    <p class="mb-2">Ready to review your picks?</p>
+    <a routerLink="/cart" class="view-cart-link">Go to basket</a>
+  </div>
+</div>
