@@ -1,0 +1,165 @@
+:host {
+  display: block;
+  padding: 3rem 0 4rem;
+}
+
+.cart-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__message {
+    margin: 0;
+
+    &.success {
+      color: #15803d;
+    }
+
+    &.error {
+      color: #b91c1c;
+    }
+  }
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: #64748b;
+  margin-bottom: 0.4rem;
+}
+
+.muted {
+  color: #64748b;
+  margin: 0;
+}
+
+.link-button {
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.primary {
+  border: none;
+  border-radius: 999px;
+  background: #ff6f61;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.primary-link {
+  border-radius: 999px;
+  background: #2f4858;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cart-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 35px rgba(15, 23, 42, 0.1);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  &--empty {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+
+  th {
+    text-align: left;
+    padding-bottom: 0.75rem;
+    color: #475569;
+    font-weight: 600;
+  }
+
+  td {
+    padding: 0.75rem 0;
+    vertical-align: top;
+  }
+
+  &__item small {
+    color: #94a3b8;
+  }
+
+  &__qty {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    button {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(15, 23, 42, 0.2);
+      background: transparent;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+    }
+  }
+}
+
+.totals {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    strong {
+      font-size: 1.4rem;
+      color: #0f172a;
+    }
+  }
+}
+
+.text-btn {
+  border: none;
+  background: none;
+  color: #dc2626;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .cart-card {
+    padding: 1.25rem;
+  }
+}

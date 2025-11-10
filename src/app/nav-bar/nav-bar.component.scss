@@ -9,6 +9,7 @@
     flex: 1;
     display: flex;
     justify-content: center;
+    gap: 0.35rem;
 }
 
 .nav-link {
@@ -27,4 +28,45 @@
         font-weight: bold;
         color: #f6f6f6;
     }
+}
+
+.cart-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.cart-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: #2f4858;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.cart-button__icon {
+    font-size: 1.1rem;
+}
+
+.cart-button__badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #ff6f61;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
 }
