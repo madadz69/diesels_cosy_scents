@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CartService, Product } from '../cart/cart.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-products',
@@ -11,6 +12,7 @@ import { CartService, Product } from '../cart/cart.service';
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent {
+
   protected readonly products: Product[] = [
     {
       id: 'wax-melt-amber',
@@ -36,9 +38,11 @@ export class ProductsComponent {
   ];
 
   private readonly cartService = inject(CartService);
+  private readonly snackBar = inject(MatSnackBar)
 
   protected add(product: Product): void {
     this.cartService.add(product);
+    this.snackBar.open(`${product.name} added to the basket`)
   }
 
   protected trackByProductId(_index: number, product: Product): string {
