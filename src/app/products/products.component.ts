@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CartService, Product } from '../cart/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -38,11 +38,24 @@ export class ProductsComponent {
   ];
 
   private readonly cartService = inject(CartService);
-  private readonly snackBar = inject(MatSnackBar)
-
+  private readonly snackBar = inject(MatSnackBar);
+  private readonly router = inject(Router);
+  
   protected add(product: Product): void {
+    const snackbarMessage = `${product.name} added to the basket`;
     this.cartService.add(product);
-    this.snackBar.open(`${product.name} added to the basket`)
+
+    const snackBarRef = this.snackBar.open(snackbarMessage, 'View Basket', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: ['dark-snackbar']
+    });
+    
+    snackBarRef.onAction().subscribe(() => {
+      console.log('Action button clicked. Navigating to the basket....');
+      this.router.navigate(['/cart']);
+    })
   }
 
   protected trackByProductId(_index: number, product: Product): string {
