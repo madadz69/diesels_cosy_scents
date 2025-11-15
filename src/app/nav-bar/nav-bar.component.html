@@ -26,11 +26,11 @@
         </li>
       </ul>
       <div class="cart-nav">
-        <a class="cart-button" routerLink="/cart">
-          <span class="cart-button__icon" aria-hidden="true">🛒</span>
-          <span class="cart-button__label">Basket</span>
+        <a class="cart-icon" routerLink="/cart" aria-label="View basket">
+          <span class="visually-hidden">View basket</span>
+          <i class="cart-icon__glyph fa-solid fa-cart-shopping" aria-hidden="true"></i>
           <ng-container *ngIf="itemCount$ | async as count">
-            <span class="cart-button__badge" *ngIf="count > 0">{{ count }}</span>
+            <span class="cart-icon__badge" *ngIf="count > 0">{{ count }}</span>
           </ng-container>
         </a>
       </div>
