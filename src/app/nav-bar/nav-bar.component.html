@@ -25,6 +25,15 @@
           <a class="nav-link" routerLink="/contact-us" routerLinkActive="active">Contact Us</a>
         </li>
       </ul>
+      <div class="cart-nav">
+        <a class="cart-icon" routerLink="/cart" aria-label="View basket">
+          <span class="visually-hidden">View basket</span>
+          <i class="cart-icon__glyph fa-solid fa-cart-shopping" aria-hidden="true"></i>
+          <ng-container *ngIf="itemCount$ | async as count">
+            <span class="cart-icon__badge" *ngIf="count > 0">{{ count }}</span>
+          </ng-container>
+        </a>
+      </div>
     </div>
   </div>
 </nav>

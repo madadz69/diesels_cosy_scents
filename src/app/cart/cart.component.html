@@ -1,0 +1,95 @@
+<div class="container mt-5">
+<section class="cart-page">
+  <header class="cart-page__header">
+    <div>
+      <p class="eyebrow">Basket</p>
+      <h1>Review your order</h1>
+      <p class="muted">
+        Double-check the melts in your basket and head to checkout when you are ready.
+      </p>
+    </div>
+
+    <a routerLink="/products" class="link-button">Continue shopping</a>
+  </header>
+
+  <ng-container *ngIf="cart$ | async as cart">
+    <section class="cart-card" *ngIf="cart.length; else emptyCart">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cart; trackBy: trackByCartItem">
+            <td>
+              <div class="cart-table__item">
+                <p class="cart-table__name">{{ item.product.name }}</p>
+                <small>{{ item.product.description }}</small>
+              </div>
+            </td>
+            <td>
+              <div class="cart-table__qty">
+                <button
+                  type="button"
+                  (click)="decrement(item.product.id)"
+                  aria-label="Decrease quantity"
+                >
+                  −
+                </button>
+                <span>{{ item.quantity }}</span>
+                <button type="button" (click)="add(item.product)" aria-label="Increase quantity">
+                  +
+                </button>
+              </div>
+            </td>
+            <td>{{ item.product.price * item.quantity | currency: 'GBP' }}</td>
+            <td>
+              <button type="button" class="text-btn" (click)="remove(item.product.id)">
+                Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="totals">
+        <div>
+          <span>Subtotal</span>
+          <strong>{{ total$ | async | currency: 'GBP' }}</strong>
+        </div>
+        <p class="muted">Shipping and tax are calculated at checkout.</p>
+      </div>
+
+      <button
+        type="button"
+        class="primary"
+        (click)="checkout()"
+        [disabled]="checkoutStatus === 'submitting'"
+      >
+        {{ checkoutStatus === 'submitting' ? 'Processing…' : 'Complete purchase' }}
+      </button>
+
+      <p
+        *ngIf="checkoutMessage"
+        [class.error]="checkoutStatus === 'error'"
+        [class.success]="checkoutStatus === 'success'"
+        class="cart-page__message"
+      >
+        {{ checkoutMessage }}
+      </p>
+    </section>
+  </ng-container>
+</section>
+
+<ng-template #emptyCart>
+  <section class="cart-card cart-card--empty">
+    <h2>Your basket is empty</h2>
+    <p class="muted">Add a wax melt or two to see your order summary here.</p>
+    <a routerLink="/products" class="primary-link">Browse products</a>
+  </section>
+</ng-template>
+</div>
