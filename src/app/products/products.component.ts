@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ProductsComponent {
 
+  // Mock the products for now!
   protected readonly products: Product[] = [
     {
       id: 'wax-melt-amber',
