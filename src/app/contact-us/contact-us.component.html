@@ -26,8 +26,14 @@
                 <textarea matInput formControlName="message"></textarea>
             </mat-form-field>
         </div>
-        <div class="row">
-             <button (click)="onSubmit()">Submit</button>
+        <div class="row mt-3 justify-content-end">
+            <div class="col-auto">
+                <button 
+                    mat-raised-button color="primary" 
+                    class="submit-button"
+                    [disabled]="FormData.invalid"
+                    (click)="onSubmit()">Submit</button>
+            </div>
         </div>
     </form>
 </div>
