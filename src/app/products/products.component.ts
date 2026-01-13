@@ -13,6 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ProductsComponent {
 
+  protected readonly dieselHomeVideo = 'assets/diesel-the-cat/diesel-with-product.HEIC';
+
   // Mock the products for now!
   protected readonly products: Product[] = [
     {
@@ -20,21 +22,21 @@ export class ProductsComponent {
       name: 'Amber Ember Wax Melt',
       description: 'A cosy blend of amber, tonka, and vanilla that feels like curling up by the fire.',
       price: 6.5,
-      imageUrl: '/assets/products/amber-ember.jpg'
+      imageUrl: 'assets/products/amber-ember.jpg'
     },
     {
       id: 'wax-melt-citrus',
       name: 'Citrus Sunrise Wax Melt',
       description: 'Bright citrus oils balanced with neroli to kick-start slower mornings.',
       price: 6,
-      imageUrl: '/assets/products/citrus-sunrise.jpg'
+      imageUrl: 'assets/products/citrus-sunrise.jpg'
     },
     {
       id: 'wax-melt-lavender',
       name: 'Lavender Drift Wax Melt',
       description: 'Hand-poured lavender, chamomile, and a whisper of cedar to wind down at night.',
       price: 7,
-      imageUrl: '/assets/products/lavender-drift.jpg'
+      imageUrl: 'assets/products/lavender-drift.jpg'
     }
   ];
 

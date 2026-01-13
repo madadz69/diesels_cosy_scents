@@ -36,6 +36,21 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+## Deploying to GitHub Pages
+
+You can publish the current UI as a static demo directly from this repository using GitHub Pages:
+
+1. Build the project into the `docs/` folder with the correct `baseHref`:
+   ```bash
+   npm run build:gh-pages
+   ```
+   This also creates a copy of `index.html` named `404.html`, which allows Angular’s router to work when deep-linking to routes.
+2. Commit and push the generated `docs/` folder to your default branch.
+3. In your repository settings, enable **GitHub Pages** and select “Deploy from a branch” → `main` (or your default branch) → `/docs`.
+
+GitHub will serve the contents of `docs/` at `https://<username>.github.io/diesels_cosy_scents/`.
+If your repository has a different name, update the `--base-href` value in the `build:gh-pages` script accordingly.
+
 ## Running unit tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
