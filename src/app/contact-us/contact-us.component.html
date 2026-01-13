@@ -1,1 +1,33 @@
-<p>contact-us works!</p>
+<!-- Jumbotron/Hero Section -->
+<div class="jumbotron jumbotron-fluid position-relative overflow-hidden">
+    <video class="jumbotron-video" autoplay muted loop playsinline poster="assets/diesel-the-cat/diesel-xmas.jpeg">
+        <source src="assets/videos/diesel-feather.mov" type="video/quicktime">
+        Your browser does not support the video tag. Please enjoy our curated scents via the shop link below.
+    </video>
+    <div class="jumbotron-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+    <div class="container position-absolute top-50 start-50 translate-middle text-center text-white">
+        <h1 class="display-4">Contact Us</h1>
+        <p class="lead">Any enquiries please contact us using the form below.</p>
+    </div>
+</div>
+<div class="container mt-5">
+    <form [formGroup]="FormData">
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Full Name</mat-label>
+                <input matInput formControlName="fullname">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email Address</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Message</mat-label>
+                <textarea matInput formControlName="message"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="row">
+             <button (click)="onSubmit()">Submit</button>
+        </div>
+    </form>
+</div>
