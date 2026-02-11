@@ -1,7 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { CartService, Product } from '../cart/cart.service';
+import { Product } from './models/product.model'
+import { ProductsService } from './service/products.service';
+import { CartService } from '../cart/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -11,34 +13,28 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
+
+  constructor(private productsService: ProductsService) {}
 
   protected readonly dieselHomeVideo = 'assets/diesel-the-cat/diesel-with-product.HEIC';
+  products: Product[] = [];
+  
+  ngOnInit() {
+    this.getProducts();
+  }
 
-  // Mock the products for now!
-  protected readonly products: Product[] = [
-    {
-      id: 'wax-melt-amber',
-      name: 'Amber Ember Wax Melt',
-      description: 'A cosy blend of amber, tonka, and vanilla that feels like curling up by the fire.',
-      price: 6.5,
-      imageUrl: 'assets/products/amber-ember.jpg'
-    },
-    {
-      id: 'wax-melt-citrus',
-      name: 'Citrus Sunrise Wax Melt',
-      description: 'Bright citrus oils balanced with neroli to kick-start slower mornings.',
-      price: 6,
-      imageUrl: 'assets/products/citrus-sunrise.jpg'
-    },
-    {
-      id: 'wax-melt-lavender',
-      name: 'Lavender Drift Wax Melt',
-      description: 'Hand-poured lavender, chamomile, and a whisper of cedar to wind down at night.',
-      price: 7,
-      imageUrl: 'assets/products/lavender-drift.jpg'
-    }
-  ];
+  getProducts() {
+    this.productsService.getData().subscribe({
+      next: (data) => {
+        this.products = data;
+        console.log(data);
+      },
+      error: (error) => {
+        console.error('Error fetching products:', error);
+      }
+    });
+  }
 
   private readonly cartService = inject(CartService);
   private readonly snackBar = inject(MatSnackBar);
@@ -61,7 +57,7 @@ export class ProductsComponent {
     })
   }
 
-  protected trackByProductId(_index: number, product: Product): string {
+  protected trackByProductId(_index: number, product: Product): number {
     return product.id;
   }
 }

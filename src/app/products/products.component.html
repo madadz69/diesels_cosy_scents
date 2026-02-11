@@ -16,10 +16,7 @@
 
 <div class="container products-section py-5">
   <div class="row g-4">
-    <div
-      class="col-sm-6 col-lg-4"
-      *ngFor="let product of products; trackBy: trackByProductId"
-    >
+    <div class="col-sm-6 col-lg-4" *ngFor="let product of products; trackBy: trackByProductId">
       <article class="product-card h-100">
         <img
           *ngIf="product.imageUrl"
