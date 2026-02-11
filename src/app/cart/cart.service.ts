@@ -2,14 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-
-export interface Product {
-  id: string;
-  name: string;
-  description?: string;
-  price: number;
-  imageUrl?: string;
-}
+import { Product } from '../products/models/product.model';
 
 export interface CartItem {
   product: Product;
@@ -24,7 +17,7 @@ export interface CheckoutDetails {
 
 export interface CheckoutRequest extends CheckoutDetails {
   items: Array<{
-    productId: string;
+    productId: number;
     quantity: number;
     price: number;
   }>;
@@ -67,7 +60,7 @@ export class CartService {
     this.updateCart(items);
   }
 
-  decrement(productId: string): void {
+  decrement(productId: number): void {
     const items = this.cloneCart()
       .map(item =>
         item.product.id === productId ? { ...item, quantity: item.quantity - 1 } : item
@@ -77,7 +70,7 @@ export class CartService {
     this.updateCart(items);
   }
 
-  remove(productId: string): void {
+  remove(productId: number): void {
     const items = this.cloneCart().filter(item => item.product.id !== productId);
     this.updateCart(items);
   }

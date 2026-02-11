@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { CartItem, CartService, Product } from './cart.service';
+import { CartItem, CartService } from './cart.service';
+import { Product } from '../products/models/product.model';
 
 @Component({
   selector: 'app-cart',
@@ -23,11 +24,11 @@ export class CartComponent {
     this.cartService.add(product);
   }
 
-  protected decrement(productId: string): void {
+  protected decrement(productId: number): void {
     this.cartService.decrement(productId);
   }
 
-  protected remove(productId: string): void {
+  protected remove(productId: number): void {
     this.cartService.remove(productId);
   }
 
@@ -54,7 +55,7 @@ export class CartComponent {
       });
   }
 
-  protected trackByCartItem(_index: number, item: CartItem): string {
+  protected trackByCartItem(_index: number, item: CartItem): number {
     return item.product.id;
   }
 }
