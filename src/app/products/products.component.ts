@@ -45,7 +45,7 @@ export class ProductsComponent implements OnInit {
     )
   }
 
-  private readonly cartService = inject(CartService);
+  protected readonly cartService = inject(CartService);
   private readonly snackBar = inject(MatSnackBar);
   private readonly router = inject(Router);
   
