@@ -15,6 +15,22 @@
 </div>
 
 <div class="container products-section py-5">
+  <div class="row">
+    <div class="col">
+      <div class="input-group mb-4">
+        <input
+          #searchCriteria
+          class="form-control" 
+          type="search"
+          placeholder="Search Here"
+        >
+        <button 
+          class="btn btn-primary" 
+          type="button" 
+          (click)="searchProducts(searchCriteria.value)">Search</button>
+      </div>
+    </div>
+  </div>
   <div class="row g-4">
     <div class="col-sm-6 col-lg-4" *ngFor="let product of products; trackBy: trackByProductId">
       <article class="product-card h-100">

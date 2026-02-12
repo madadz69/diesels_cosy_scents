@@ -5,6 +5,7 @@ import { Product } from './models/product.model'
 import { ProductsService } from './service/products.service';
 import { CartService } from '../cart/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -34,6 +35,14 @@ export class ProductsComponent implements OnInit {
         console.error('Error fetching products:', error);
       }
     });
+  }
+
+  searchProducts(query: string) {
+    this.productsService.searchProduct(query).pipe(take(1)).subscribe(data => {
+        this.products = data;
+        console.log(data);
+      }
+    )
   }
 
   private readonly cartService = inject(CartService);

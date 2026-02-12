@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 
@@ -10,13 +10,16 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   // Create the service URL placeholder
-  private serviceUrl = 'http://localhost:8080';
-
+  serviceUrl = "http://localhost:8080";
+  
   // hit the endpoint and get the products
   getData(): Observable<Product[]> {
     const data = this.http.get<Product[]>(this.serviceUrl + "/products");
     return data;
   }
 
-
+  searchProduct(searchTerm: string): Observable<Product[]> {
+    const params = new HttpParams().set('q', searchTerm);
+    return this.http.get<Product[]>(`${this.serviceUrl}/products/search`, { params });
+  }
 }
