@@ -4,5 +4,9 @@
 }
 
 .jumbotron-image {
-    filter: blur(2px);
+    object-fit: cover;
+}
+
+.jumbotron-overlay {
+    background: rgba(0, 0, 0, 0.4);
 }
